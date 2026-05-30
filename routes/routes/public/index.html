@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lights of Imaan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="font-family: Arial; text-align:center; padding:20px;">
+
+  <h1>🌙 Lights of Imaan</h1>
+
+  <p>Welcome to your Islamic App</p>
+
+  <h3>📿 Prayer Times</h3>
+  <div id="prayer">Loading...</div>
+
+  <script>
+    fetch("/prayer")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("prayer").innerHTML =
+          "Fajr: " + data.Fajr + "<br>" +
+          "Dhuhr: " + data.Dhuhr + "<br>" +
+          "Asr: " + data.Asr + "<br>" +
+          "Maghrib: " + data.Maghrib + "<br>" +
+          "Isha: " + data.Isha;
+      })
+      .catch(() => {
+        document.getElementById("prayer").innerHTML = "Error loading data";
+      });
+  </script>
+
+</body>
+</html>
